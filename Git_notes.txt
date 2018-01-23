@@ -1,0 +1,108 @@
+Notes for basic usage of Git with Github
+
+https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
+
+Download and Install:
+    GNU Linux:
+        sudo apt-get install git
+    Windows:
+        Download it?
+    
+    Configure Username/Email:
+        git config --global user.name "keithpenney"
+        git config --global user.email XXXXX@domain.info
+
+Introduce Git to Github:
+    https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-linux
+    Using HTTPS:
+        Cloning repositories with HTTPS requires generating secure connection credentials with either a credential
+        manager or Secure Shell (SSH)
+    GNU Linux:
+        Using SSH, we create a new ssh key associated with your email:
+            ssh-keygen -t rsa -b 4096 -C "XXXXX@domain.info"
+        Use the default file location to store the key (press Enter when prompted for a filename)
+        Now we have to added the SSH key to the SSH agent:
+            eval "$(ssh-agent -s)"
+        This makes ssh-agent run in the background.  Now we add the SSH key we created in the default location with:
+            ssh-add ~/.ssh/id_rsa
+    Windows:
+        If you've installed "Git for Windows" you can configure git to use the credential helper (in "Git BASH"):
+            git config --global credential.helper wincred
+    
+    Lastly, add the stored SSH key to your GitHub account by following these steps:
+        https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+
+Initialize Directory:
+    Download a copy of a github repository:
+        ...
+    Or just create a new folder somewhere.
+    
+    Take a 'snapshot' of all contents of the current directory.  This will be stored in the temporary staging area
+    (the 'index') which can later be stored permanently as a commit.
+        git add .
+    
+    Store the current contents of the 'index' as a commit to the repository.  Note that this will only apply locally
+    and won't be applied to a remote (e.g. github) repository until it is "pushed" (I think)
+        git commit -m "Optional (recommended) commit message"
+
+Edit Away:
+    After making changes to files, you can add them to the index manually via:
+        git add file1 file2 file3
+    or just add the entire contents again (I think)
+        git add .
+    
+    Get a diff of the edits in the index with the last commit:
+        git diff --cached
+    
+    Get a diff of the edits not yet added to the index:
+        git diff
+    
+    Get a summary of the current situation (e.g. which files have been modified or added to the 'index') since last commit:
+        git status
+        
+Commit the Edits:
+    When you're ready to save the changes currently stored in the 'index' to the local repository, use:
+        git commit -m "A message about your commit"
+    
+    Alternatively, if you want to add all recent changes to the 'index', you can do that at commit time with:
+        git commit -a -m "commit message, of course"
+
+Branch Out for Safety:
+    If you have a version that's working well and you want to make some significant edits, it's probably a good idea to
+    create a new branch:
+        git branch newBranchName
+    
+    Then you can get a list of all branches (with an asterisk next to the current branch) with:
+        git branch
+        
+    To switch your current branch:
+        git checkout newBranchName
+        
+    After editing, commit changes to the new branch with:
+        git commit -a
+        
+    We can then merge the new branch with the master if we decide we like the changes.
+        git checkout master
+        git merge newBranchName
+    
+    If there are any conflicts between the two branches (say you edited the master branch as well), diff will show them:
+        git diff
+        
+    After resolving all conflicts, simply commit again:
+        git commit -a
+
+Deleting a Branch:
+    Once you've merged branches and have no need for the other branch (which is concurrent with 'master'), delete it with:
+        git branch -d newBranchName
+        
+    If you want to delete a branch without merging it (just giving up on the whole idea), delete it with:
+        git branch -D someOtherBranchThatSucks
+    
+
+
+Commit Messages:
+    A commit message should start with a short "title" of the commit followed by a newline and a more thorough description.
+    E.g:
+        Added random crash feature
+        The program was too stable and predictable so I added a feature that crashes at pseudo-random times biased towards
+        late nights and moments of high user activity.

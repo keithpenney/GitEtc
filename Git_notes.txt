@@ -37,6 +37,8 @@ Initialize Directory:
         ...
     Or just create a new folder somewhere.
     
+    Initialize the Git repository (creating a local /.git 'index'):
+        git init
     Take a 'snapshot' of all contents of the current directory.  This will be stored in the temporary staging area
     (the 'index') which can later be stored permanently as a commit.
         git add .

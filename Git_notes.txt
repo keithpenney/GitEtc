@@ -100,7 +100,11 @@ Deleting a Branch:
     If you want to delete a branch without merging it (just giving up on the whole idea), delete it with:
         git branch -D someOtherBranchThatSucks
     
-
+Push to Github:
+    Push the contents of your current directory to a github repository.
+        git push origin http://..../RepoName.git
+    Or if the directory was originally cloned from a repository the origin is already stored, so you can just use:
+        git push
 
 Commit Messages:
     A commit message should start with a short "title" of the commit followed by a newline and a more thorough description.

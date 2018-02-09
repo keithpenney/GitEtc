@@ -47,6 +47,10 @@ Initialize Directory:
     and won't be applied to a remote (e.g. github) repository until it is "pushed" (I think)
         git commit -m "Optional (recommended) commit message"
 
+OR Synch Your Current Directory:
+    Pull repository from master to local.  Compares and reports a diff summary as well.
+        git pull [options] [<repository>]
+
 Edit Away:
     After making changes to files, you can add them to the index manually via:
         git add file1 file2 file3
@@ -100,11 +104,6 @@ Deleting a Branch:
     If you want to delete a branch without merging it (just giving up on the whole idea), delete it with:
         git branch -D someOtherBranchThatSucks
     
-Push to Github:
-    Push the contents of your current directory to a github repository.
-        git push origin http://..../RepoName.git
-    Or if the directory was originally cloned from a repository the origin is already stored, so you can just use:
-        git push
 
 Commit Messages:
     A commit message should start with a short "title" of the commit followed by a newline and a more thorough description.

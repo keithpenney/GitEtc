@@ -57,6 +57,9 @@ Edit Away:
     or just add the entire contents again (I think)
         git add .
     
+    To remove a previously added file,
+        git reset <file>
+    
     Get a diff of the edits in the index with the last commit:
         git diff --cached
     

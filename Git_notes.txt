@@ -86,7 +86,14 @@ Branch Out for Safety:
         
     To switch your current branch:
         git checkout newBranchName
-        
+    
+    To create a new branch and immediately switch to it, you can use the '-b' flag:
+        git checkout -b newBranchName
+    
+    If you have unstaged changes to your current branch, you'll be asked to commit the changes or stash them.
+    Stashing the changes allows you to leave them uncommitted and revisit them at a later time.
+        git stash
+    
     After editing, commit changes to the new branch with:
         git commit -a
         

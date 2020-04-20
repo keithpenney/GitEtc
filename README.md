@@ -20,6 +20,14 @@ As are task lists:
 - [ ] Learn Tcl
 - [ ] Learn everything else...
 
+Normals lists are made with a dash '-' or asterisk '_*_' starting the line.
+
+- This is an item in a list
+* This is also a list item.
+  * This is a nested list item (a sublist), which are created by indenting at least 2 spaces
+    - Next level is twice as many spaces.
+      - How far does this go?
+
 ## Code Formatting and Syntax Highlighting!
 
 Code snippets can be written `<inline>` or
